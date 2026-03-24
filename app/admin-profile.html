@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile - Velavan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        #adminProfile {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-bottom: 20px;
+            border: none;
+            width: 100%;
+        }
+        
+        #adminProfile:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        #userInfo {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .footer {
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        
+        .footer strong {
+            color: #3b82f6;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            #adminProfile {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="adminProfile">You - Admin</button>
+        <div id="userInfo"></div>
+        
+        <div class="footer">
+            <p>Created by <strong>Velavan</strong> | Email: <strong>velavan18007@gmail.com</strong></p>
+            <p>Advanced TypeScript Project Management System</p>
+        </div>
+    </div>
+
+    <script>
+        // TypeScript Code (converted to JavaScript for HTML)
+        const adminProfile = document.getElementById("adminProfile") as HTMLElement;
+        const userInfo = document.getElementById("userInfo") as HTMLElement;
+
+        // Default user data
+        const defaultName = "Velavan";
+        const defaultEmail = "velavan18007@gmail.com";
+
+        // Load from localStorage or use default
+        const savedName = localStorage.getItem("name") || defaultName;
+        const savedEmail = localStorage.getItem("email") || defaultEmail;
+
+        // Show on screen
+        userInfo.innerText = `Name: ${savedName} | Email: ${savedEmail}`;
+
+        adminProfile.addEventListener("click", () => {
+            const newName = prompt("Enter your name:", savedName);
+            const newEmail = prompt("Enter your email:", savedEmail);
+
+            if (newName && newEmail) {
+                localStorage.setItem("name", newName);
+                localStorage.setItem("email", newEmail);
+
+                userInfo.innerText = `Name: ${newName} | Email: ${newEmail}`;
+            }
+        });
+
+        // Add some interactivity
+        adminProfile.addEventListener('mouseenter', () => {
+            adminProfile.style.transform = 'scale(1.05)';
+        });
+
+        adminProfile.addEventListener('mouseleave', () => {
+            adminProfile.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
